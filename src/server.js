@@ -4,8 +4,12 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-    origin: "http://https://vercel-frontend-rose.vercel.app:5173",
-}))
+    origin: [
+      "https://vercel-frontend-rose.vercel.app",
+      "http://localhost:5173"
+    ],
+  })
+);
 
 app.get("/", (req, res) => {
     res.status(200).json({  message: "Backend working 🚀"  });
@@ -91,8 +95,11 @@ app.get("/products", (req, res) => {
 
 });
 
-// app.listen(5000, () => {
-//     console.log("Server is running on port 5000");
-// });
+if (process.env.NODE_ENV !== "production") {
+  const PORT = 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
 
 export default app;
