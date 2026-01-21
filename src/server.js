@@ -1,7 +1,7 @@
 import express from "express";
 import cors from 'cors';
 import products from './routes/products.route.js'
-
+import team from './routes/team.route.js'
 const app = express();
 
 app.use(cors({
@@ -17,6 +17,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", products);
+
+app.use("/api", team);
+
+ 
 
 //  app.get("/api",product) (req, res) => {
 

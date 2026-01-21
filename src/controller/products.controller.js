@@ -249,6 +249,9 @@ export const getProducts = (req,res) => {
         ? products_details.slice(0, limit)
         : products_details;
 
-    res.status(200).json({ productdata: result })
+    res.status(200).json({ 
+        title: "Our Services",
+        intro: "Below are representative services displayed using live public API data.",
+        productdata: result })
 
 }
